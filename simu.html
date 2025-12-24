@@ -1,87 +1,145 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simu - WekaOda</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simu - WekaOda</title>
 
-<style>
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#020617;
-  color:white;
-}
-header{
-  padding:20px;
-  text-align:center;
-  background:#020617;
-  color:#22d3ee;
-  font-size:26px;
-  font-weight:bold;
-}
-.products{
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-.card{
-  background:#1e293b;
-  padding:20px;
-  border-radius:18px;
-  text-align:center;
-}
-.card img{
-  width:100%;
-  border-radius:12px;
-}
-.card h3{
-  margin:15px 0 8px;
-}
-.price{
-  font-size:20px;
-  color:#22d3ee;
-  font-weight:bold;
-}
-.btn{
-  display:inline-block;
-  margin-top:12px;
-  padding:12px 22px;
-  background:#22d3ee;
-  color:black;
-  border-radius:25px;
-  text-decoration:none;
-  font-weight:bold;
-}
-</style>
+  <style>
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background: linear-gradient(180deg,#020617,#020b1f);
+      color:white;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    header{
+      padding:20px;
+      text-align:center;
+      background:#020617;
+      color:#22d3ee;
+      font-size:28px;
+      font-weight:bold;
+    }
+    .back-home{
+      position:absolute;
+      top:20px;
+      left:20px;
+      color:#22d3ee;
+      text-decoration:none;
+      font-size:18px;
+    }
+    .products{
+      padding:20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+      flex:1;
+      max-width:1200px;
+      margin:0 auto;
+      width:100%;
+    }
+    .card{
+      background:#1e293b;
+      padding:20px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(34,211,238,0.15);
+      transition:0.3s;
+    }
+    .card:hover{
+      transform:scale(1.05);
+      background:#22d3ee;
+      color:#020617;
+    }
+    .card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px;
+    }
+    .card h3{
+      margin:15px 0 8px;
+      font-size:20px;
+    }
+    .price{
+      font-size:22px;
+      color:#22d3ee;
+      font-weight:bold;
+      margin:10px 0;
+    }
+    .card:hover .price{
+      color:#020617;
+    }
+    .btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:14px 30px;
+      background:#22d3ee;
+      color:black;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:16px;
+    }
+    .card:hover .btn{
+      background:#020617;
+      color:#22d3ee;
+    }
+    footer{
+      padding:25px;
+      background:#020617;
+      color:#94a3b8;
+      font-size:16px;
+      text-align:center;
+    }
+    footer a{
+      color:#22d3ee;
+      text-decoration:none;
+      font-weight:bold;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>📱 SIMU ZINAZOPATIKANA</header>
+  <a href="index.html" class="back-home">↩ Rudi Home</a>
 
-<div class="products">
+  <header>📱 SIMU ZINAZOPATIKANA</header>
 
-  <div class="card">
-    <img src="https://via.placeholder.com/300x220" alt="">
-    <h3>Infinix Hot 40</h3>
-    <div class="price">TZS 350,000</div>
-    <a class="btn" 
-    href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20SIMU%20INFINIX%20HOT%2040"
-    target="_blank">Lipia hapa</a>
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.tokopedia.net/img/cache/700/product-1/2023/12/18/241730241/241730241_8f0d5e9e-5e6d-4e6f-9c8a-2e1b0b0e6f2d.jpg" alt="Infinix Hot 40">
+      <h3>Infinix Hot 40</h3>
+      <div class="price">TZS 350,000</div>
+      <a class="btn" 
+         href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20SIMU%20INFINIX%20HOT%2040"
+         target="_blank">Lipia hapa</a>
+    </div>
+
+    <div class="card">
+      <img src="https://images.samsung.com/is/image/samsung/p6pim/ke/galaxy-a14/gallery/ke-galaxy-a14-sm-a146pzkgafc-535858036?$650_519_PNG$" alt="Samsung Galaxy A14">
+      <h3>Samsung A14</h3>
+      <div class="price">TZS 420,000</div>
+      <a class="btn" 
+         href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20SAMSUNG%20A14"
+         target="_blank">Lipia hapa</a>
+    </div>
+
   </div>
 
-  <div class="card">
-    <img src="https://via.placeholder.com/300x220" alt="">
-    <h3>Samsung A14</h3>
-    <div class="price">TZS 420,000</div>
-    <a class="btn" 
-    href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20SAMSUNG%20A14"
-    target="_blank">Lipia hapa</a>
-  </div>
-
-</div>
+  <footer>
+    <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">
+      WhatsApp
+    </a> |
+    <a href="mailto:eliasjosiah13@gmail.com">Email</a> |
+    <a href="https://instagram.com/eliacjosiah" target="_blank">Instagram</a>
+    <br><br>
+    © 2025 WekaOda
+  </footer>
 
 </body>
 </html>
