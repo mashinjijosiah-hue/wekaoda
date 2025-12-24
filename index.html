@@ -43,11 +43,11 @@
       font-size:18px;
       outline:none;
       background:#1e293b;
-      color:black;
+      color:white;
       margin-bottom:40px;
     }
     input::placeholder{
-      color:black;
+      color:#94a3b8;
       font-weight:bold;
     }
     .grid{
@@ -63,6 +63,20 @@
       border-radius:20px;
       box-shadow:0 10px 25px rgba(34,211,238,0.15);
       font-size:18px;
+      cursor:pointer; /* Inafanya ionekane kama button */
+      transition:0.3s;
+    }
+    .card:hover{
+      transform:scale(1.05);
+      background:#22d3ee;
+      color:#020617;
+    }
+    .card a{
+      color:inherit;
+      text-decoration:none;
+      display:block;
+      width:100%;
+      height:100%;
     }
     footer{
       margin-top:60px;
@@ -95,15 +109,78 @@
 <div class="container">
   <h2>Tafuta Bidhaa</h2>
 
-<input 
-  type="text" 
-  placeholder="andika bidhaa hapa" 
-  onkeydown="goSearch(event)">
+  <input 
+    type="text" 
+    placeholder="andika bidhaa hapa (kisha bonyeza Enter)" 
+    onkeydown="goSearch(event)">
 
   <div class="grid">
-    <div class="card">📱 Simu</div>
-    <div class="card">💻 Laptop</div>
-    <div class="card">📺 TV</div>
+    <div class="card" onclick="window.location.href='simu.html'">
+      <a href="simu.html">📱 Simu</a>
+    </div>
+    <div class="card" onclick="window.location.href='laptop.html'">
+      <a href="laptop.html">💻 Laptop</a>
+    </div>
+    <div class="card" onclick="window.location.href='tv.html'">
+      <a href="tv.html">📺 TV</a>
+    </div>
+    <div class="card" onclick="window.location.href='radio.html'">
+      <a href="radio.html">📻 Radio</a>
+    </div>
+    <div class="card" onclick="window.location.href='godoro.html'">
+      <a href="godoro.html">🛏️ Godoro</a>
+    </div>
+    <div class="card" onclick="window.location.href='kitanda.html'">
+      <a href="kitanda.html">🛌 Kitanda</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-kike.html'">
+      <a href="nguo-kike.html">👗 Nguo za Kike</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-kiume.html'">
+      <a href="nguo-kiume.html">👔 Nguo za Kiume</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-watoto.html'">
+      <a href="nguo-watoto.html">🧒 Nguo za Watoto</a>
+    </div>
+    <div class="card" onclick="window.location.href='https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA'">
+      <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">➕ Vitu Vingine</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">
+    WhatsApp
+  </a> |
+  <a href="mailto:eliasjosiah13@gmail.com">Email</a> |
+  <a href="https://instagram.com/eliacjosiah" target="_blank">Instagram</a>
+  <br><br>
+  © 2025 WekaOda
+</footer>
+
+<script>
+function goSearch(e){
+  if(e.key === "Enter"){
+    let value = e.target.value.toLowerCase().trim();
+
+    if(value.includes("simu")){
+      window.location.href = "simu.html";
+    } 
+    else if(value.includes("laptop")){
+      window.location.href = "laptop.html";
+    } 
+    else if(value.includes("tv")){
+      window.location.href = "tv.html";
+    } 
+    else {
+      window.location.href = "https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA";
+    }
+  }
+}
+</script>
+
+</body>
+      </html>    <div class="card">📺 TV</div>
     <div class="card">📻 Radio</div>
     <div class="card">🛏️ Godoro</div>
     <div class="card">🛌 Kitanda</div>
