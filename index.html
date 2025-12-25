@@ -12,7 +12,7 @@
       background: linear-gradient(180deg,#020617,#020b1f);
       color:white;
       text-align:center;
-      padding-bottom: 80px; /* Ili footer isikatwe chini kwenye app */
+      padding-bottom: 100px; /* Space chini ili footer ionekane vizuri kwenye app */
     }
     header{
       padding:20px;
@@ -85,9 +85,7 @@
       background:#020617;
       color:#94a3b8;
       font-size:16px;
-      /* Tumeondoa fixed ili isistick na isirudie kwenye app */
-      position: static;
-      bottom: auto;
+      position: static; /* Isistick, iwe chini kawaida */
       width: 100%;
     }
     footer a{
@@ -104,6 +102,85 @@
 <div class="notice">
   Kama kuna kitu unauza, nitafute  
   <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">
+    WhatsApp
+  </a>  
+  hapo chini 👇 <br>
+  au piga <strong>077943083</strong>
+</div>
+
+<div class="container">
+  <h2>Tafuta Bidhaa</h2>
+
+  <input 
+    type="text" 
+    placeholder="andika bidhaa hapa (kisha bonyeza Enter)" 
+    onkeydown="goSearch(event)">
+
+  <div class="grid">
+    <div class="card" onclick="window.location.href='simu.html'">
+      <a href="simu.html">📱 Simu</a>
+    </div>
+    <div class="card" onclick="window.location.href='laptop.html'">
+      <a href="laptop.html">💻 Laptop</a>
+    </div>
+    <div class="card" onclick="window.location.href='tv.html'">
+      <a href="tv.html">📺 TV</a>
+    </div>
+    <div class="card" onclick="window.location.href='radio.html'">
+      <a href="radio.html">📻 Radio</a>
+    </div>
+    <div class="card" onclick="window.location.href='godoro.html'">
+      <a href="godoro.html">🛏️ Godoro</a>
+    </div>
+    <div class="card" onclick="window.location.href='kitanda.html'">
+      <a href="kitanda.html">🛌 Kitanda</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-kike.html'">
+      <a href="nguo-kike.html">👗 Nguo za Kike</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-kiume.html'">
+      <a href="nguo-kiume.html">👔 Nguo za Kiume</a>
+    </div>
+    <div class="card" onclick="window.location.href='nguo-watoto.html'">
+      <a href="nguo-watoto.html">🧒 Nguo za Watoto</a>
+    </div>
+    <div class="card" onclick="window.location.href='https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA'">
+      <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">➕ Vitu Vingine</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">WhatsApp</a> |
+  <a href="mailto:eliasjosiah13@gmail.com">Email</a> |
+  <a href="https://instagram.com/eliacjosiah" target="_blank">Instagram</a>
+  <br><br>
+  © 2025 WekaOda
+</footer>
+
+<script>
+function goSearch(e){
+  if(e.key === "Enter"){
+    let value = e.target.value.toLowerCase().trim();
+
+    if(value.includes("simu")){
+      window.location.href = "simu.html";
+    } 
+    else if(value.includes("laptop")){
+      window.location.href = "laptop.html";
+    } 
+    else if(value.includes("tv")){
+      window.location.href = "tv.html";
+    } 
+    else {
+      window.location.href = "https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA";
+    }
+  }
+}
+</script>
+
+</body>
+      </html>  <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">
     WhatsApp
   </a>  
   hapo chini 👇 <br>
