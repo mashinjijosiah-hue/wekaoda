@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#06b6d4">
 <title>WekaOda</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.png">
 
 <style>
 /* MSINGI (BASE STYLES) */
@@ -16,6 +20,7 @@ body{
   display:flex;
   flex-direction:column;
   transition: background 0.3s, color 0.3s;
+  -webkit-tap-highlight-color: transparent;
 }
 body.dark{background:#020617;color:#fff}
 
@@ -132,6 +137,7 @@ body.dark footer{background:#0f172a}
   transition:.3s;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 body.dark #menuBox{background:#0f172a;color:white}
 
@@ -151,11 +157,28 @@ body.dark #menuBox{background:#0f172a;color:white}
   line-height: 1;
 }
 
-/* THEME SWITCHER BUTTONS */
+/* THEME SWITCHER BUTTONS & LABELS */
+.menu-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 10px 5px 5px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.menu-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 15px 0;
+  border: none;
+  width: 100%;
+}
+body.dark .menu-divider { background: #334155; }
+
 .theme-container {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background: #f1f5f9;
   padding: 10px;
   border-radius: 12px;
@@ -195,6 +218,18 @@ body.dark .theme-btn {
 body.dark #menuBox a { border-bottom-color: #334155; }
 #menuBox img{width:22px}
 
+/* ABOUT BOX */
+.about-box {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+}
+body.dark .about-box { background: #0c4a6e; color: #bae6fd; }
+
 </style>
 </head>
 
@@ -208,12 +243,18 @@ body.dark #menuBox a { border-bottom-color: #334155; }
       <div class="close-menu" onclick="closeMenu()">×</div>
     </div>
 
-    <div style="font-size:12px; color:#888; margin-bottom:5px;">CHAGUA MUONEKANO:</div>
+    <div class="menu-label">MUONEKANO</div>
     <div class="theme-container">
       <div class="theme-btn" onclick="setTheme('light')">☀️ Light</div>
       <div class="theme-btn" onclick="setTheme('dark')">🌙 Dark</div>
     </div>
 
+    <div class="menu-label">TAARIFA (NOTIFICATIONS)</div>
+    <div class="theme-btn" onclick="enableNotifications()" style="width:auto; margin-bottom:10px;">
+       🔔 Washa Notification
+    </div>
+
+    <div class="menu-label">WASILIANA NASI</div>
     <a href="https://maps.google.com/?q=Iborogelo,Igunga" target="_blank">📍 Iborogelo, Igunga</a>
     <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
@@ -222,10 +263,16 @@ body.dark #menuBox a { border-bottom-color: #334155; }
       <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"> Instagram
     </a>
     <a href="tel:0779430083">📞 Call (Piga Simu)</a>
-    
-    <div style="margin-top: auto; font-size: 12px; text-align: center; color: #888; padding-top:20px;">
-      Website by Elias Josiah Mashinji
+
+    <hr class="menu-divider">
+
+    <div class="menu-label">KUHUSU (ABOUT)</div>
+    <div class="about-box">
+      Website hii imetengenezwa na<br>
+      <strong style="font-size:16px;">Elias Josiah Mashinji</strong><br>
+      Software Developer
     </div>
+    
   </div>
 </div>
 
@@ -262,7 +309,36 @@ body.dark #menuBox a { border-bottom-color: #334155; }
 <footer>© 2025 WekaOda</footer>
 
 <script>
-// Angalia theme iliyohifadhiwa mwanzo
+// SERVICE WORKER
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('App imekubali:', reg))
+      .catch(err => console.log('Kuna shida:', err));
+  });
+}
+
+// NOTIFICATION LOGIC
+function enableNotifications() {
+  if (!("Notification" in window)) {
+    alert("Simu yako haikubali notifications.");
+    return;
+  }
+
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      // Tuma notification ya majaribio
+      new Notification("WekaOda", {
+        body: "Asante! Sasa utapata taarifa za bidhaa mpya.",
+        icon: "icon.png"
+      });
+    } else {
+      alert("Tafadhali ruhusu notifications kwenye settings za simu.");
+    }
+  });
+}
+
+// THEME & OTHERS
 window.onload = function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -270,7 +346,6 @@ window.onload = function() {
     }
 }
 
-// Badilisha Theme
 function setTheme(mode) {
     if (mode === 'dark') {
         document.body.classList.add('dark');
@@ -281,25 +356,19 @@ function setTheme(mode) {
     }
 }
 
-// Logic ya Menu
 let menuOpen=false;
 
 function openMenu(){
   menuOpen=true;
   document.getElementById("menuOverlay").style.display="block";
-  // Tumia setTimeout ili animation ifanye kazi
-  setTimeout(() => {
-     document.getElementById("menuBox").style.left="0";
-  }, 10);
+  setTimeout(() => { document.getElementById("menuBox").style.left="0"; }, 10);
   history.pushState({}, "");
 }
 
 function closeMenu(){
   menuOpen=false;
   document.getElementById("menuBox").style.left="-280px";
-  setTimeout(()=>{
-      document.getElementById("menuOverlay").style.display="none"
-  },300);
+  setTimeout(()=>{ document.getElementById("menuOverlay").style.display="none" },300);
 }
 window.onpopstate=()=>{ if(menuOpen) closeMenu(); }
 
