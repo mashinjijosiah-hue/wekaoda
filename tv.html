@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV - WekaOda</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      background: white;
+      color: #06b6d4;
+      font-size: 26px;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .back-button {
+      font-size: 32px;
+      cursor: pointer;
+      margin-right: 15px;
+      color: #06b6d4;
+      text-decoration: none;
+    }
+
+    .container {
+      padding: 20px;
+      flex: 1;
+    }
+
+    h2 {
+      text-align: center;
+      color: #06b6d4;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .card h3 {
+      margin: 15px 0 8px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #06b6d4;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px 0;
+      padding: 14px 30px;
+      background: #06b6d4;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0891b2;
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 25px;
+      background: white;
+      color: #64748b;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(6, 182, 212, 0.05);
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #06b6d4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Modal for zoomed image */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 15px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-button">←</a>
+  📺 TV Zinazopatikana
+</header>
+
+<div class="container">
+  <h2>Bidhaa za TV</h2>
+
+  <div class="products">
+
+    <!-- Ongeza TV zako hapa (mfano tu) -->
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300?text=Hisense+55+Inch" alt="Hisense 55 Inch" onclick="openModal(this.src)">
+      <h3>Hisense 55 Inch Smart TV</h3>
+      <div class="price">TZS 1,200,000</div>
+      <a class="btn" 
+         href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20TV%20HISENSE%2055%20INCH"
+         target="_blank">Lipia hapa</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300?text=Samsung+43+Inch" alt="Samsung 43 Inch" onclick="openModal(this.src)">
+      <h3>Samsung 43 Inch LED TV</h3>
+      <div class="price">TZS 850,000</div>
+      <a class="btn" 
+         href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20TV%20SAMSUNG%2043%20INCH"
+         target="_blank">Lipia hapa</a>
+    </div>
+
+    <!-- Ongeza TV nyingine hapa kama unavyotaka -->
+
+  </div>
+</div>
+
+<!-- Modal for zoomed image -->
+<div class="modal" id="imageModal" onclick="closeModal()">
+  <span class="close-modal" onclick="closeModal()">×</span>
+  <img id="modalImage" src="" alt="Zoomed image">
+</div>
+
+<footer>
+  <a href="https://wa.me/255775769511?text=HABARI%20NAHITAJI%20BIDHAA" target="_blank">WhatsApp</a> |
+  <a href="mailto:eliasjosiah13@gmail.com">Email</a> |
+  <a href="https://instagram.com/eliacjosiah" target="_blank">Instagram</a>
+  <br><br>
+  © 2025 WekaOda
+</footer>
+
+<script>
+// Ongeza state ili back button ya simu irudi homepage
+history.pushState({page: "tv"}, "");
+
+window.addEventListener("popstate", function(e) {
+  window.location.href = "index.html";
+});
+
+function openModal(src) {
+  document.getElementById("imageModal").classList.add("active");
+  document.getElementById("modalImage").src = src;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
